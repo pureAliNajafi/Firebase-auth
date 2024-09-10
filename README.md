@@ -38,6 +38,7 @@ After Allowing Authentication with email / password ,To enable email address upd
 ![Disable email enumeration protection in Firebase](https://github.com/pureAliNajafi/Firebase-auth/blob/main/email-update-error-firebase.jpg?raw=true)
 
 For more details, refer to the official [Email Enumeration Protection Documentation](https://cloud.google.com/identity-platform/docs/admin/email-enumeration-protection?hl=en&authuser=0).
+
 5. **Install Dependencies:**
    Run the following command to install the required dependencies:
 
