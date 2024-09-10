@@ -11,14 +11,7 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
-/* const firebaseConfig = {
-  apiKey: "AIzaSyAyMZrusv9oTfPbwTkXZ9VnoXwT1L7gZIA",
-  authDomain: "auth-development-d09aa.firebaseapp.com",
-  projectId: "auth-development-d09aa",
-  storageBucket: "auth-development-d09aa.appspot.com",
-  messagingSenderId: "393400356295",
-  appId: "1:393400356295:web:8457a748e20c1bb2549de2",
-}; */
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
