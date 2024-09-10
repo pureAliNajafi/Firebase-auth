@@ -1,6 +1,6 @@
 # Demo
 
- [link](https://firebase-auth-liard.vercel.app/).
+ [demo](https://firebase-auth-liard.vercel.app/)
 
 ## Available Scripts
 
