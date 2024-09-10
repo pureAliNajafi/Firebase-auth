@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./Contexts/AuthContext";
+import Layout from "./Layout";
+import {
+  RootPage,
+  ItemDetailPage,
+  Manage,
+  SignInPage,
+  SignUpPage,
+  FogotPasswordPage,
+  DashboardPage,
+  UpdateProfilePage,
+} from "./pages";
+import PrivateRoute from "./PrivateRoute";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path="/auth/signUp" element={<PrivateRoute component={SignUpPage} />} />
+            <Route path="/auth/signIn" element={<PrivateRoute component={SignInPage} />} />
+            <Route path="/auth/forgot-password" element={<FogotPasswordPage />} />
+            <Route
+              path="/update-profile"
+              element={<PrivateRoute component={UpdateProfilePage} />}
+            />
+            <Route path="/dashboard" element={<PrivateRoute component={DashboardPage} />} />
+            <Route path="/Manage" element={<Manage />} />
+            <Route path="/items/:id" element={<ItemDetailPage />} />
+            <Route path="/" element={<RootPage />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </AuthProvider>
   );
 }
 

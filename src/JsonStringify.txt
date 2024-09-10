@@ -1,0 +1,5 @@
+        <span className="bg-orange-400">
+          <div className="text-left">
+            {currentUser && <pre>{JSON.stringify(currentUser, null, 2)}</pre>}
+          </div>
+        </span>
