@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../firebase"; // Without default import since it's now a named export
+import { auth } from "../firebase";
 import {
   GoogleAuthProvider,
-  signInWithPopup, // For Google sign-in
+  signInWithRedirect,
+  getRedirectResult,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut as firebaseSignOut,
@@ -13,21 +14,22 @@ import {
   updatePassword as firebaseUpdatePassword,
   sendEmailVerification as firebaseSendEmailVerification,
 } from "firebase/auth";
+
 const AuthContext = createContext();
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-  console.log("daymnnn");
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const googleProvider = new GoogleAuthProvider();
-  // no need to use async, Firebase's authentication methods are already asynchronous and return Promises.
 
-  const googleSignIn = () => signInWithPopup(auth, googleProvider);
+  // Google Sign-In function using redirect
+  const googleSignIn = () => {
+    console.log("Starting Google Sign-In");
+    return signInWithRedirect(auth, googleProvider);
+  };
 
   const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password);
   const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
@@ -35,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   const passwordReset = (email) => sendPasswordResetEmail(auth, email);
   const userReauthentication = (email, password) => {
     const credential = EmailAuthProvider.credential(email, password);
-    return reauthenticateWithCredential(currentUser, credential); // Return the promise, handle in form
+    return reauthenticateWithCredential(currentUser, credential);
   };
   const updateEmail = (email) => firebaseUpdateEmail(currentUser, email);
   const updatePassword = (password) => firebaseUpdatePassword(currentUser, password);
@@ -43,9 +45,25 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
+      console.log("Auth state changed. Current user:", user);
       setCurrentUser(user);
       setLoading(false);
     });
+
+    // Ensure getRedirectResult is called after auth state changes
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result) {
+          console.log("Google redirect result:", result);
+          setCurrentUser(result.user);
+        } else {
+          console.log("No redirect result found");
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting redirect result:", error);
+      });
+
     return unsubscribe;
   }, []);
 
