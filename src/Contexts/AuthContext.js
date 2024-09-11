@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../firebase"; // Without default import since it's now a named export
 import {
+  GoogleAuthProvider,
+  signInWithPopup, // For Google sign-in
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut as firebaseSignOut,
@@ -10,8 +12,7 @@ import {
   updateEmail as firebaseUpdateEmail,
   updatePassword as firebaseUpdatePassword,
   sendEmailVerification as firebaseSendEmailVerification,
-} from "firebase/auth"; // Import the method from firebase/auth
-
+} from "firebase/auth";
 const AuthContext = createContext();
 
 export const useAuth = () => {
@@ -23,7 +24,11 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const googleProvider = new GoogleAuthProvider();
   // no need to use async, Firebase's authentication methods are already asynchronous and return Promises.
+
+  const googleSignIn = () => signInWithPopup(auth, googleProvider);
+
   const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password);
   const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
   const signOut = () => firebaseSignOut(auth);
@@ -46,6 +51,7 @@ export const AuthProvider = ({ children }) => {
 
   const value = {
     currentUser,
+    googleSignIn,
     signUp,
     signIn,
     signOut,

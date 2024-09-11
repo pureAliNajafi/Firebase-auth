@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../../Contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 const SignUpForm = () => {
-  const { signUp, currentUser } = useAuth();
+  const { googleSignIn, signUp, currentUser } = useAuth();
 
   const navigate = useNavigate();
 
@@ -35,6 +35,18 @@ const SignUpForm = () => {
     setLoading(false);
   };
 
+  const handleGoogleSignIn = async () => {
+    try {
+      setLoading(true);
+      await googleSignIn();
+      alert("Signed in with Google successfully!");
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Google sign-in error:", error);
+      alert("Failed to sign in with Google: " + error.message);
+    }
+    setLoading(false);
+  };
   return (
     <div>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -120,6 +132,25 @@ const SignUpForm = () => {
               </Link>
             </div>
           </form>
+          <div className="px-2 mt-5  flex  justify-center items-center gap-1">
+            <div className="flex-1 border-2 h-0 border-gray-400 rounded-sm"></div>
+            <strong className="-mt-[3px] inline-block">or</strong>
+            <div className="flex-1 border-2 h-0 border-gray-400 rounded-sm"></div>
+          </div>
+          <div className="mt-6">
+            <button
+              onClick={handleGoogleSignIn}
+              disabled={loading}
+              className="duration-300 disabled:border-gray-400 flex w-full justify-center rounded-md border-2 border-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-indigo-500 disabled:text-gray-400  shadow-sm hover:border-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 /focus-visible:outline-red-600"
+            >
+              <span className="pr-1">Sign in with </span> <span className="text-sky-500"> G</span>
+              <span className="text-red-500">o</span>
+              <span className="text-yellow-500">o</span>
+              <span className="text-sky-500">g</span>
+              <span className="text-green-500">l</span>
+              <span className="text-red-500">e</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
