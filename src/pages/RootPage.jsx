@@ -18,7 +18,7 @@ const RootPage = () => {
     fakeStore();
   }, []);
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-10 px-5">
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-10 px-5 rounded-md my-2">
       {fake ? (
         <ul className="w-full flex flex-wrap justify-center gap-5">
           {fake.map((item, index) => (

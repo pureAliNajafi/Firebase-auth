@@ -112,7 +112,7 @@ const SignUpForm = () => {
                 <input
                   id="password-confirm"
                   name="password-confirm"
-                  type="password-confirm"
+                  type="password"
                   required
                   className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -128,7 +128,7 @@ const SignUpForm = () => {
                 Sign Up
               </button>
               <Link to="/auth/signIn" className="text-center mt-3 block">
-                already have account? <span className="text-indigo-700"> Sign In</span>
+                Already have account? <span className="text-indigo-700"> Sign In</span>
               </Link>
             </div>
           </form>
@@ -266,7 +266,7 @@ const SignUpForm = () => {
                 Sign Up
               </button>
               <Link to="/auth/signIn" className="text-center mt-3 block">
-                already have account? <span className="text-indigo-700"> Sign In</span>
+                Already have account? <span className="text-indigo-700"> Sign In</span>
               </Link>
             </div>
           </form>
