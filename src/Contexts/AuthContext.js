@@ -64,6 +64,11 @@ export const AuthProvider = ({ children }) => {
     const credential = GoogleAuthProvider.credentialFromError(error);
     // ...
   }); */
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      console.log("Auth state changed. Current user:", user);
+      setCurrentUser(user);
+    });
+
     getRedirectResult(auth)
       .then((result) => {
         if (result) {
@@ -76,11 +81,6 @@ export const AuthProvider = ({ children }) => {
       .catch((error) => {
         console.error("Error getting redirect result:", error);
       });
-
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      console.log("Auth state changed. Current user:", user);
-      setCurrentUser(user);
-    });
 
     return unsubscribe;
   }, []);

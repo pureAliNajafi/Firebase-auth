@@ -13,6 +13,7 @@ import {
   UpdateProfilePage,
 } from "./pages";
 import PrivateRoute from "./PrivateRoute";
+import TestAuth from "./components/TestAuth";
 function App() {
   return (
     <AuthProvider>
@@ -30,6 +31,7 @@ function App() {
             <Route path="/Manage" element={<Manage />} />
             <Route path="/items/:id" element={<ItemDetailPage />} />
             <Route path="/" element={<RootPage />} />
+            <Route path="*" element={<TestAuth />} />
           </Routes>
         </Layout>
       </Router>
