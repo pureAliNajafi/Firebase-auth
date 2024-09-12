@@ -18,7 +18,7 @@ function App() {
     <AuthProvider>
       <Router>
         <Layout>
-          {/*           <Routes>
+          <Routes>
             <Route path="/auth/signUp" element={<PrivateRoute component={SignUpPage} />} />
             <Route path="/auth/signIn" element={<PrivateRoute component={SignInPage} />} />
             <Route path="/auth/forgot-password" element={<FogotPasswordPage />} />
@@ -30,6 +30,7 @@ function App() {
             <Route path="/Manage" element={<Manage />} />
             <Route path="/items/:id" element={<ItemDetailPage />} />
             <Route path="/" element={<RootPage />} />
+            {/* Add a Firebase handler route */}
             <Route path="/__/auth/handler" element={<div>Loading...</div>} />
 
             <Route
@@ -40,7 +41,7 @@ function App() {
                 </div>
               }
             />
-          </Routes> */}
+          </Routes>
         </Layout>
       </Router>
     </AuthProvider>
