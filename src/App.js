@@ -30,6 +30,9 @@ function App() {
             <Route path="/Manage" element={<Manage />} />
             <Route path="/items/:id" element={<ItemDetailPage />} />
             <Route path="/" element={<RootPage />} />
+            {/* Add a Firebase handler route */}
+            <Route path="/__/auth/handler" element={<div>Loading...</div>} />
+
             <Route
               path="*"
               element={
