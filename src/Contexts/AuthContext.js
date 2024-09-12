@@ -14,9 +14,7 @@ import {
   updatePassword as firebaseUpdatePassword,
   sendEmailVerification as firebaseSendEmailVerification,
 } from "firebase/auth";
-
 const AuthContext = createContext();
-
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
