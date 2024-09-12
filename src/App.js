@@ -13,7 +13,6 @@ import {
   UpdateProfilePage,
 } from "./pages";
 import PrivateRoute from "./PrivateRoute";
-import TestAuth from "./components/TestAuth";
 function App() {
   return (
     <AuthProvider>
@@ -31,7 +30,14 @@ function App() {
             <Route path="/Manage" element={<Manage />} />
             <Route path="/items/:id" element={<ItemDetailPage />} />
             <Route path="/" element={<RootPage />} />
-            <Route path="*" element={<TestAuth />} />
+            <Route
+              path="*"
+              element={
+                <div className="mt-[35vh] text-center">
+                  (<span className="text-indigo-500">404</span>) Page Not Found
+                </div>
+              }
+            />
           </Routes>
         </Layout>
       </Router>
