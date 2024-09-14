@@ -119,7 +119,7 @@ const SignInForm = () => {
           <strong className="-mt-[3px] inline-block">or</strong>
           <div className="flex-1 border-2 h-0 border-gray-400 rounded-sm"></div>
         </div>
-        <div className="mt-6">
+        {/*      <div className="mt-6">
           <button
             onClick={handleGoogleSignIn}
             disabled={loading}
@@ -132,7 +132,7 @@ const SignInForm = () => {
             <span className="text-green-500">l</span>
             <span className="text-red-500">e</span>
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
