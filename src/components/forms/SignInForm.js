@@ -1,7 +1,9 @@
 import { useAuth } from "../../Contexts/AuthContext";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { getRedirectResult } from "firebase/auth";
+import { auth } from "../../firebase";
+import { useEffect } from "react";
 const SignInForm = () => {
   const { googleSignIn, signIn, currentUser } = useAuth();
   const navigate = useNavigate();
@@ -26,6 +28,19 @@ const SignInForm = () => {
     }
     setLoading(false);
   };
+  useEffect(() => {
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result) {
+          console.log("Google redirect result found:", result);
+        } else {
+          console.log("No redirect result found");
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting redirect result:", error);
+      });
+  }, []);
 
   // Google Sign-In handler
   const handleGoogleSignIn = async () => {
