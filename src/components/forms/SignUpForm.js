@@ -132,12 +132,12 @@ const SignUpForm = () => {
               </Link>
             </div>
           </form>
-          <div className="px-2 mt-5  flex  justify-center items-center gap-1">
+          {/* <div className="px-2 mt-5  flex  justify-center items-center gap-1">
             <div className="flex-1 border-2 h-0 border-gray-400 rounded-sm"></div>
             <strong className="-mt-[3px] inline-block">or</strong>
             <div className="flex-1 border-2 h-0 border-gray-400 rounded-sm"></div>
           </div>
-          {/* <div className="mt-6">
+         <div className="mt-6">
             <button
               onClick={handleGoogleSignIn}
               disabled={loading}
