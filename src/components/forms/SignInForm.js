@@ -114,25 +114,6 @@ const SignInForm = () => {
             Don't have an account? <span className="text-indigo-700">Sign Up</span>
           </Link>
         </form>
-        <div className="px-2 mt-5  flex  justify-center items-center gap-1">
-          <div className="flex-1 border-2 h-0 border-gray-400 rounded-sm"></div>
-          <strong className="-mt-[3px] inline-block">or</strong>
-          <div className="flex-1 border-2 h-0 border-gray-400 rounded-sm"></div>
-        </div>
-        {/*      <div className="mt-6">
-          <button
-            onClick={handleGoogleSignIn}
-            disabled={loading}
-            className="duration-300 disabled:border-gray-400 flex w-full justify-center rounded-md border-2 border-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-indigo-500 disabled:text-gray-400  shadow-sm hover:border-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 /focus-visible:outline-red-600"
-          >
-            <span className="pr-1">Sign in with </span> <span className="text-sky-500"> G</span>
-            <span className="text-red-500">o</span>
-            <span className="text-yellow-500">o</span>
-            <span className="text-sky-500">g</span>
-            <span className="text-green-500">l</span>
-            <span className="text-red-500">e</span>
-          </button>
-        </div> */}
       </div>
     </div>
   );
